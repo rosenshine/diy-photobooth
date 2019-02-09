@@ -172,6 +172,10 @@ import effectRipple from '../utils/effectRipple.js';
 
 export default {
   props: {
+    imageNum: {
+      type: String,
+      default: ''
+    },
     // 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分
     field: {
       type: String,
@@ -189,16 +193,6 @@ export default {
     url: {
       type: String,
       default: ''
-    },
-    // 其他要上传文件附带的数据，对象格式
-    params: {
-      type: Object,
-      default: null
-    },
-    //Add custom headers
-    headers: {
-      type: Object,
-      default: null
     },
     // 剪裁图片的宽
     width: {
@@ -218,7 +212,7 @@ export default {
     // 不预览圆形图片
     noCircle: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 不预览方形图片
     noSquare: {
@@ -792,97 +786,32 @@ export default {
       that.createImgUrl = canvas.toDataURL(mime);
     },
     prepareUpload() {
-      let { url, createImgUrl, field, ki } = this;
+      let { createImgUrl, field, ki } = this;
       this.$emit('crop-success', createImgUrl, field, ki);
-      if (typeof url == 'string' && url) {
-        this.upload();
-      } else {
-        this.off();
-      }
+      this.upload();
+      this.$emit('close-upload');
     },
     // 上传图片
     upload() {
-      let that = this,
-        {
-          lang,
-          imgFormat,
-          mime,
-          url,
-          params,
-          headers,
-          field,
-          ki,
-          createImgUrl,
-          withCredentials,
-          method
-        } = this,
-        fmData = new FormData();
+      let fmData = new FormData();
       fmData.append(
-        field,
-        data2blob(createImgUrl, mime),
-        field + '.' + imgFormat
+        this.field,
+        data2blob(this.createImgUrl, this.mime),
+        this.field + '.' + this.imgFormat
       );
 
-      // 添加其他参数
-      if (typeof params == 'object' && params) {
-        Object.keys(params).forEach(k => {
-          fmData.append(k, params[k]);
-        });
-      }
+      localStorage.setItem('imgString', this.createImgUrl);
+      this.updateImg(this.createImgUrl);
+    },
 
-      // 监听进度回调
-      const uploadProgress = function(event) {
-        if (event.lengthComputable) {
-          that.progress = (100 * Math.round(event.loaded)) / event.total;
-        }
-      };
-
-      // 上传文件
-      that.reset();
-      that.loading = 1;
-      that.setStep(3);
-      new Promise(function(resolve, reject) {
-        let client = new XMLHttpRequest();
-        client.open(method, url, true);
-        client.withCredentials = withCredentials;
-        client.onreadystatechange = function() {
-          if (this.readyState !== 4) {
-            return;
-          }
-          if (this.status === 200 || this.status === 201) {
-            resolve(JSON.parse(this.responseText));
-          } else {
-            reject(this.status);
-          }
-        };
-        client.upload.addEventListener('progress', uploadProgress, false); //监听进度
-        // 设置header
-        if (typeof headers == 'object' && headers) {
-          Object.keys(headers).forEach(k => {
-            client.setRequestHeader(k, headers[k]);
-          });
-        }
-        client.send(fmData);
-      }).then(
-        // 上传成功
-        function(resData) {
-          if (that.value) {
-            that.loading = 2;
-            that.$emit('crop-upload-success', resData, field, ki);
-          }
-        },
-        // 上传失败
-        function(sts) {
-          if (that.value) {
-            that.loading = 3;
-            that.hasError = true;
-            that.errorMsg = lang.fail;
-            that.$emit('crop-upload-fail', sts, field, ki);
-          }
-        }
-      );
+    updateImg(url) {
+      this.$store.dispatch('updateImg', {
+        value: url,
+        imageNum: this.imageNum
+      });
     }
   },
+
   created() {
     // 绑定按键esc隐藏此插件事件
     document.addEventListener('keyup', e => {

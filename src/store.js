@@ -8,7 +8,11 @@ export default new Vuex.Store({
     hue: 0,
     vibrance: 0,
     contrast: 30,
-    sepia: 0
+    sepia: 0,
+    img1: '',
+    img2: '',
+    img3: '',
+    img4: ''
   },
   mutations: {
     setHue(state, payload) {
@@ -22,6 +26,10 @@ export default new Vuex.Store({
     },
     setSepia(state, payload) {
       state.sepia = payload;
+    },
+    setImg(state, payload) {
+      const { value, imageNum } = payload;
+      state[imageNum] = value;
     }
   },
   actions: {
@@ -36,6 +44,9 @@ export default new Vuex.Store({
     },
     updateSepia({ commit }, { value }) {
       commit('setSepia', value);
+    },
+    updateImg({ commit }, payload) {
+      commit('setImg', payload);
     }
   }
 });
