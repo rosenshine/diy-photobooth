@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import AddCrop from '@/components/AddCrop.vue';
 
 export default {
