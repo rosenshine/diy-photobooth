@@ -37,12 +37,12 @@ export default {
   },
   methods: {
     exportImage() {
+      // get filter from store
+      const filter = this.img1Url.style.filter;
+
       // create canvases for all four images
       let img1Canvas = new Image;
-      const element = this.img1Url;
-      console.log(element.style.filter);
-      img1Canvas.src = element.src;
-      img1Canvas.style.cssText = `filter: ${element.style.filter};`;
+      img1Canvas.src = this.img1Url.src;
 
       let img2Canvas = new Image;
       img2Canvas.src = this.img2Url;
@@ -65,6 +65,7 @@ export default {
       ctx.fill();
 
       // for each image, draw the canvas leaving room for the bezels
+      ctx.filter = filter;
       ctx.drawImage(img1Canvas, 15, 15);
       ctx.strokeRect(15, 15, 300, 300);
       ctx.drawImage(img2Canvas, 15, 330);
