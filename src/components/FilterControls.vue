@@ -3,43 +3,78 @@
     <v-layout>
       <v-flex xs3><p>Blur</p></v-flex>
       <v-flex xs8
-        ><v-slider max="20" min="0" step="0" v-on:change="updateFilter" v-model="blur"
+        ><v-slider
+          max="20"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="blur"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Brightness</p></v-flex>
       <v-flex xs8
-        ><v-slider max="3" min="0" step="0" v-on:change="updateFilter" v-model="brightness"
+        ><v-slider
+          max="3"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="brightness"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Contrast</p></v-flex>
       <v-flex xs8
-        ><v-slider max="5" min="0" step="0" v-on:change="updateFilter" v-model="contrast"
+        ><v-slider
+          max="5"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="contrast"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Grayscale</p></v-flex>
       <v-flex xs8
-        ><v-slider max="1" min="0" step="0" v-on:change="updateFilter" v-model="grayscale"
+        ><v-slider
+          max="1"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="grayscale"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Hue-Rotate</p></v-flex>
       <v-flex xs8
-        ><v-slider max="360" min="0" step="0" v-on:change="updateFilter" v-model="hueRotate"
+        ><v-slider
+          max="360"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="hueRotate"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Saturation</p></v-flex>
       <v-flex xs8
-        ><v-slider max="5" min="0" step="0" v-on:change="updateFilter" v-model="saturate"
+        ><v-slider
+          max="5"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="saturate"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Sepia</p></v-flex>
       <v-flex xs8
-        ><v-slider max="1" min="0" step="0" v-on:change="updateFilter" v-model="sepia"
+        ><v-slider
+          max="1"
+          min="0"
+          step="0"
+          v-on:change="updateFilter"
+          v-model="sepia"
       /></v-flex>
     </v-layout>
 
@@ -48,9 +83,13 @@
       <v-btn xs3 color="info" @click="setProps('cleaverProps')">Cleaver</v-btn>
       <v-btn xs3 color="info" @click="setProps('bradyProps')">Brady</v-btn>
       <v-btn xs3 color="info" @click="setProps('wonkaProps')">Wonka</v-btn>
-      <v-btn xs3 color="info" @click="setProps('woodstockProps')">Woodstock</v-btn>
+      <v-btn xs3 color="info" @click="setProps('woodstockProps')"
+        >Woodstock</v-btn
+      >
       <v-btn xs3 color="info" @click="setProps('addamsProps')">Addams</v-btn>
-      <v-btn xs3 color="info" @click="setProps('frontierProps')">Frontier</v-btn>
+      <v-btn xs3 color="info" @click="setProps('frontierProps')"
+        >Frontier</v-btn
+      >
       <v-btn xs3 color="info" @click="setProps('invertProps')">Invert</v-btn>
     </v-layout>
   </v-container>
@@ -60,7 +99,7 @@
 export default {
   name: 'FilterControls',
   data() {
-      return {
+    return {
       blur: 0,
       brightness: 1,
       contrast: 1,
@@ -87,7 +126,7 @@ export default {
     },
 
     setProps(filterName) {
-      const filters =  {
+      const filters = {
         defaultProps: {
           blur: 0,
           brightness: 1,
@@ -96,7 +135,8 @@ export default {
           hueRotate: 0,
           invert: 0,
           saturate: 1,
-          sepia: 0},
+          sepia: 0
+        },
         addamsProps: {
           blur: 0,
           brightness: 1,
@@ -104,8 +144,8 @@ export default {
           grayscale: 0,
           hueRotate: 0,
           invert: 0,
-          saturate: .45,
-          sepia: .46
+          saturate: 0.45,
+          sepia: 0.46
         },
         wonkaProps: {
           blur: 0,
@@ -121,17 +161,17 @@ export default {
           blur: 0,
           brightness: 1,
           contrast: 1,
-          grayscale: .4,
+          grayscale: 0.4,
           hueRotate: 14.5,
           invert: 0,
-          saturate: .8,
+          saturate: 0.8,
           sepia: 0
         },
         bradyProps: {
           blur: 0,
           brightness: 1.5,
           contrast: 1,
-          grayscale: .4,
+          grayscale: 0.4,
           hueRotate: 14.5,
           invert: 0,
           saturate: 1.2,
@@ -149,9 +189,9 @@ export default {
         },
         frontierProps: {
           blur: 0,
-          brightness: .87,
+          brightness: 0.87,
           contrast: 2.3,
-          grayscale: .13,
+          grayscale: 0.13,
           hueRotate: 0,
           invert: 0,
           saturate: 1.4,
@@ -166,8 +206,8 @@ export default {
           invert: 1,
           saturate: 1,
           sepia: 0
-        },
-      }
+        }
+      };
       this.blur = filters[filterName].blur;
       this.brightness = filters[filterName].brightness;
       this.contrast = filters[filterName].contrast;

@@ -181,7 +181,7 @@ export default {
       type: String,
       default: 'avatar'
     },
-    // 
+    //
     ki: {
       default: 0
     },

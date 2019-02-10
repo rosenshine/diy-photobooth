@@ -14,11 +14,7 @@
           <i class="far fa-edit"></i>
         </a>
       </div>
-      <img
-        :src="storedImg"
-        :style="filters"
-        :id="fileNum"
-      />
+      <img :src="storedImg" :style="filters" :id="fileNum" />
     </div>
     <my-upload
       field="img"
@@ -83,20 +79,24 @@ export default {
       return this.$store.state.filterProps.sepia;
     },
     filters() {
-      const toDash = (str) => str.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase()
+      const toDash = str =>
+        str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
       const filters = {
-          saturate: this.filterSaturate,
-          blur: this.filterBlur,
-          brightness: this.filterBrightness,
-          contrast: this.filterContrast,
-          grayscale: this.filterGrayscale,
-          'hue-rotate': this.filterHueRotate,
-          invert: this.filterInvert,
-          sepia: this.filterSepia
-        };
+        saturate: this.filterSaturate,
+        blur: this.filterBlur,
+        brightness: this.filterBrightness,
+        contrast: this.filterContrast,
+        grayscale: this.filterGrayscale,
+        'hue-rotate': this.filterHueRotate,
+        invert: this.filterInvert,
+        sepia: this.filterSepia
+      };
       return {
-        filter: Object.entries(filters).filter(item => typeof(item[1]) !== 'object').map(item => `${toDash(item[0])}(${item[1]})`).join(' ') 
-      }
+        filter: Object.entries(filters)
+          .filter(item => typeof item[1] !== 'object')
+          .map(item => `${toDash(item[0])}(${item[1]})`)
+          .join(' ')
+      };
     }
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
     closeUpload() {
       this.show = false;
     },
-    toDash: (str) => str.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase(),
+    toDash: str => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
   }
 };
 </script>
@@ -129,7 +129,7 @@ export default {
 }
 img {
   max-width: 100%;
-  filter: sepia("filterSepia");
+  filter: sepia('filterSepia');
   border: 1px solid #c4c4c4;
 }
 .add-btn,

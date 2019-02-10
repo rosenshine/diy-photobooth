@@ -8,7 +8,7 @@
         <add-crop fileNum="img4" />
       </v-card>
     </v-flex>
-    <v-btn color="success" @click="exportImage" >Save</v-btn>
+    <v-btn color="success" @click="exportImage">Save</v-btn>
   </v-layout>
 </template>
 
@@ -41,16 +41,16 @@ export default {
       const filter = this.img1Url.style.filter;
 
       // create canvases for all four images
-      let img1Canvas = new Image;
+      let img1Canvas = new Image();
       img1Canvas.src = this.img1Url.src;
 
-      let img2Canvas = new Image;
+      let img2Canvas = new Image();
       img2Canvas.src = this.img2Url;
 
-      let img3Canvas = new Image;
+      let img3Canvas = new Image();
       img3Canvas.src = this.img3Url;
 
-      let img4Canvas = new Image;
+      let img4Canvas = new Image();
       img4Canvas.src = this.img4Url;
 
       // create the wrapper canvas with a white background
@@ -60,7 +60,7 @@ export default {
       let ctx = merger.getContext('2d');
       ctx.strokeStyle = '#3a3a3a';
       ctx.lineWidth = 1;
-      ctx.rect(0,0,330,1275);
+      ctx.rect(0, 0, 330, 1275);
       ctx.fillStyle = 'white';
       ctx.fill();
 
@@ -76,13 +76,13 @@ export default {
       ctx.strokeRect(15, 960, 300, 300);
 
       // export the full image as a png
-      merger.toBlob((blob) => {
+      merger.toBlob(blob => {
         let blobUrl = URL.createObjectURL(blob);
         let link = document.createElement('a');
         link.href = blobUrl;
         link.download = 'photostrip.png';
         link.click();
-      })
+      });
     }
   }
 };

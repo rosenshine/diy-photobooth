@@ -21,6 +21,6 @@ export default {
   components: {
     FilterControls,
     PhotoStrip
-  },
+  }
 };
 </script>
