@@ -1,40 +1,57 @@
 <template>
   <v-container fluid grid-list-ls>
     <v-layout>
-      <v-flex xs3><p>Hue</p></v-flex>
+      <v-flex xs3><p>Blur</p></v-flex>
       <v-flex xs8
-        ><v-slider thumb-label value="currentHue" v-on:change="updateHue"
+        ><v-slider max="20" min="0" step="0" v-on:change="updateFilter" v-model="blur"
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Vibrance</p></v-flex>
+      <v-flex xs3><p>Brightness</p></v-flex>
       <v-flex xs8
-        ><v-slider thumb-label v-on:change="updateVibrance" value="vibrance"
+        ><v-slider max="3" min="0" step="0" v-on:change="updateFilter" v-model="brightness"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Contrast</p></v-flex>
       <v-flex xs8
-        ><v-slider thumb-label v-on:change="updateContrast" value="contrast"
+        ><v-slider max="5" min="0" step="0" v-on:change="updateFilter" v-model="contrast"
+      /></v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex xs3><p>Grayscale</p></v-flex>
+      <v-flex xs8
+        ><v-slider max="1" min="0" step="0" v-on:change="updateFilter" v-model="grayscale"
+      /></v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex xs3><p>Hue-Rotate</p></v-flex>
+      <v-flex xs8
+        ><v-slider max="360" min="0" step="0" v-on:change="updateFilter" v-model="hueRotate"
+      /></v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex xs3><p>Saturation</p></v-flex>
+      <v-flex xs8
+        ><v-slider max="5" min="0" step="0" v-on:change="updateFilter" v-model="saturate"
       /></v-flex>
     </v-layout>
     <v-layout>
       <v-flex xs3><p>Sepia</p></v-flex>
       <v-flex xs8
-        ><v-slider thumb-label v-on:change="updateSepia" value="sepia"
+        ><v-slider max="1" min="0" step="0" v-on:change="updateFilter" v-model="sepia"
       /></v-flex>
     </v-layout>
+
     <v-layout>
-      <v-btn xs3>B/W</v-btn>
-      <v-btn xs3>Deco</v-btn>
-      <v-btn xs3>Modern</v-btn>
-      <v-btn xs3>Gothic</v-btn>
-    </v-layout>
-    <v-layout>
-      <h3>Current hue: {{ hue }}</h3>
-      <h3>Current vibrance: {{ vibrance }}</h3>
-      <h3>Current contrast: {{ contrast }}</h3>
-      <h3>Current sepia: {{ sepia }}</h3>
+      <v-btn xs3 color="error" @click="setProps('defaultProps')">Reset</v-btn>
+      <v-btn xs3 color="info" @click="setProps('cleaverProps')">Cleaver</v-btn>
+      <v-btn xs3 color="info" @click="setProps('bradyProps')">Brady</v-btn>
+      <v-btn xs3 color="info" @click="setProps('wonkaProps')">Wonka</v-btn>
+      <v-btn xs3 color="info" @click="setProps('woodstockProps')">Woodstock</v-btn>
+      <v-btn xs3 color="info" @click="setProps('addamsProps')">Addams</v-btn>
+      <v-btn xs3 color="info" @click="setProps('frontierProps')">Frontier</v-btn>
+      <v-btn xs3 color="info" @click="setProps('invertProps')">Invert</v-btn>
     </v-layout>
   </v-container>
 </template>
@@ -43,34 +60,123 @@
 export default {
   name: 'FilterControls',
   data() {
-    return {};
-  },
-  computed: {
-    hue() {
-      return this.$store.state.hue;
-    },
-    vibrance() {
-      return this.$store.state.vibrance;
-    },
-    contrast() {
-      return this.$store.state.contrast;
-    },
-    sepia() {
-      return this.$store.state.sepia;
-    }
+      return {
+      blur: 0,
+      brightness: 1,
+      contrast: 1,
+      grayscale: 0,
+      hueRotate: 0,
+      invert: 0,
+      saturate: 1,
+      sepia: 0
+    };
   },
   methods: {
-    updateHue(event) {
-      this.$store.dispatch('updateHue', { value: event });
+    updateFilter() {
+      const filter = {
+        blur: this.blur,
+        brightness: this.brightness,
+        contrast: this.contrast,
+        grayscale: this.grayscale,
+        hueRotate: this.hueRotate,
+        invert: this.invert,
+        saturate: this.saturate,
+        sepia: this.sepia
+      };
+      this.$store.dispatch('updateFilter', filter);
     },
-    updateVibrance(event) {
-      this.$store.dispatch('updateVibrance', { value: event });
-    },
-    updateContrast(event) {
-      this.$store.dispatch('updateContrast', { value: event });
-    },
-    updateSepia(event) {
-      this.$store.dispatch('updateSepia', { value: event });
+
+    setProps(filterName) {
+      const filters =  {
+        defaultProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 1,
+          grayscale: 0,
+          hueRotate: 0,
+          invert: 0,
+          saturate: 1,
+          sepia: 0},
+        addamsProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 2.3,
+          grayscale: 0,
+          hueRotate: 0,
+          invert: 0,
+          saturate: .45,
+          sepia: .46
+        },
+        wonkaProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 1.7,
+          grayscale: 0,
+          hueRotate: 249,
+          invert: 0,
+          saturate: 1.04,
+          sepia: 0
+        },
+        woodstockProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 1,
+          grayscale: .4,
+          hueRotate: 14.5,
+          invert: 0,
+          saturate: .8,
+          sepia: 0
+        },
+        bradyProps: {
+          blur: 0,
+          brightness: 1.5,
+          contrast: 1,
+          grayscale: .4,
+          hueRotate: 14.5,
+          invert: 0,
+          saturate: 1.2,
+          sepia: 0
+        },
+        cleaverProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 1.45,
+          grayscale: 0,
+          hueRotate: 0,
+          invert: 0,
+          saturate: 0,
+          sepia: 0
+        },
+        frontierProps: {
+          blur: 0,
+          brightness: .87,
+          contrast: 2.3,
+          grayscale: .13,
+          hueRotate: 0,
+          invert: 0,
+          saturate: 1.4,
+          sepia: 0.94
+        },
+        invertProps: {
+          blur: 0,
+          brightness: 1,
+          contrast: 1,
+          grayscale: 0,
+          hueRotate: 0,
+          invert: 1,
+          saturate: 1,
+          sepia: 0
+        },
+      }
+      this.blur = filters[filterName].blur;
+      this.brightness = filters[filterName].brightness;
+      this.contrast = filters[filterName].contrast;
+      this.grayscale = filters[filterName].grayscale;
+      this.hueRotate = filters[filterName].hueRotate;
+      this.invert = filters[filterName].invert;
+      this.saturate = filters[filterName].saturate;
+      this.sepia = filters[filterName].sepia;
+      this.updateFilter();
     }
   }
 };

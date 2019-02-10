@@ -14,13 +14,17 @@
           <i class="far fa-edit"></i>
         </a>
       </div>
-      <img :src="storedImg" />
+      <img
+        :src="storedImg"
+        v-bind:style="filters"
+      />
     </div>
     <my-upload
       field="img"
       v-model="show"
       :width="300"
       :height="300"
+      :noRotate="false"
       :imageNum="fileNum"
       img-format="png"
       @close-upload="closeUpload"
@@ -52,6 +56,46 @@ export default {
     },
     hasNotUploaded() {
       return this.$store.state[this.fileNum] === '';
+    },
+    filterBlur() {
+      return `${Math.floor(this.$store.state.filterProps.blur)}px`;
+    },
+    filterBrightness() {
+      return this.$store.state.filterProps.brightness;
+    },
+    filterContrast() {
+      return this.$store.state.filterProps.contrast;
+    },
+    filterGrayscale() {
+      return this.$store.state.filterProps.grayscale;
+    },
+    filterHueRotate() {
+      return `${this.$store.state.filterProps.hueRotate}deg`;
+    },
+    filterInvert() {
+      return this.$store.state.filterProps.invert === 0 ? 0 : 1;
+    },
+    filterSaturate() {
+      return this.$store.state.filterProps.saturate;
+    },
+    filterSepia() {
+      return this.$store.state.filterProps.sepia;
+    },
+    filters() {
+      const toDash = (str) => str.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase()
+      const filters = {
+          saturate: this.filterSaturate,
+          blur: this.filterBlur,
+          brightness: this.filterBrightness,
+          contrast: this.filterContrast,
+          grayscale: this.filterGrayscale,
+          'hue-rotate': this.filterHueRotate,
+          invert: this.filterInvert,
+          sepia: this.filterSepia
+        };
+      return {
+        filter: Object.entries(filters).filter(item => typeof(item[1]) !== 'object').map(item => `${toDash(item[0])}(${item[1]})`).join(' ') 
+      }
     }
   },
   methods: {
@@ -67,7 +111,8 @@ export default {
     },
     closeUpload() {
       this.show = false;
-    }
+    },
+    toDash: (str) => str.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase(),
   }
 };
 </script>
@@ -83,6 +128,8 @@ export default {
 }
 img {
   max-width: 100%;
+  filter: sepia("filterSepia");
+  border: 1px solid #c4c4c4;
 }
 .add-btn,
 .edit-btn {
@@ -92,5 +139,6 @@ img {
   right: 0;
   padding-top: 5px;
   padding-right: 10px;
+  z-index: 1;
 }
 </style>

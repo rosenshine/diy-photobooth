@@ -8,6 +8,7 @@
         <add-crop fileNum="img4" />
       </v-card>
     </v-flex>
+    <v-btn color="success">Save</v-btn>
   </v-layout>
 </template>
 

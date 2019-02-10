@@ -5,48 +5,36 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    hue: 0,
-    vibrance: 0,
-    contrast: 30,
-    sepia: 0,
     img1: '',
     img2: '',
     img3: '',
-    img4: ''
+    img4: '',
+    filterProps: {
+      blur: 0,
+      brightness: 1,
+      contrast: 1,
+      grayscale: 0,
+      hueRotate: 0,
+      invert: 0,
+      saturate: 1,
+      sepia: 0
+    }
   },
   mutations: {
-    setHue(state, payload) {
-      state.hue = payload;
-    },
-    setVibrance(state, payload) {
-      state.vibrance = payload;
-    },
-    setContrast(state, payload) {
-      state.contrast = payload;
-    },
-    setSepia(state, payload) {
-      state.sepia = payload;
-    },
     setImg(state, payload) {
       const { value, imageNum } = payload;
       state[imageNum] = value;
+    },
+    setFilter(state, payload) {
+      state.filterProps = payload;
     }
   },
   actions: {
-    updateHue({ commit }, { value }) {
-      commit('setHue', value);
-    },
-    updateVibrance({ commit }, { value }) {
-      commit('setVibrance', value);
-    },
-    updateContrast({ commit }, { value }) {
-      commit('setContrast', value);
-    },
-    updateSepia({ commit }, { value }) {
-      commit('setSepia', value);
-    },
     updateImg({ commit }, payload) {
       commit('setImg', payload);
+    },
+    updateFilter({ commit }, payload) {
+      commit('setFilter', payload);
     }
   }
 });
