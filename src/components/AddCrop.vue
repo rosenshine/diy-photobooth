@@ -16,7 +16,8 @@
       </div>
       <img
         :src="storedImg"
-        v-bind:style="filters"
+        :style="filters"
+        :id="fileNum"
       />
     </div>
     <my-upload
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import MyUpload from '@/components/upload-2.vue';
+import MyUpload from '@/components/MyUpload.vue';
 
 export default {
   name: 'AddCrop',
