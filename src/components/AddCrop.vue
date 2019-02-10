@@ -19,8 +19,8 @@
     <my-upload
       field="img"
       v-model="show"
-      :width="300"
-      :height="300"
+      :width="500"
+      :height="500"
       :noRotate="false"
       :imageNum="fileNum"
       img-format="png"
@@ -121,16 +121,15 @@ export default {
 <style scoped lang="scss">
 .cell {
   cursor: pointer;
-  width: 15vw;
-  height: 15vw;
-  background-color: rgb(230, 224, 224);
+  width: 20vw;
+  height: 20vw;
+  background-color: rgb(189, 225, 245);
   margin: 15px 15px 15px 15px;
   position: relative;
 }
 img {
-  max-width: 100%;
+  width: 100%;
   filter: sepia('filterSepia');
-  border: 1px solid #c4c4c4;
 }
 .add-btn,
 .edit-btn {

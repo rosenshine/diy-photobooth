@@ -1,15 +1,17 @@
 <template>
-  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-      <v-card class="strip">
-        <add-crop fileNum="img1" />
-        <add-crop fileNum="img2" />
-        <add-crop fileNum="img3" />
-        <add-crop fileNum="img4" />
-      </v-card>
-    </v-flex>
-    <v-btn color="success" @click="exportImage">Save</v-btn>
-  </v-layout>
+  <v-container>
+    <v-layout>
+      <v-flex xs12 sm10 offset-sm1>
+        <v-card class="strip">
+          <add-crop fileNum="img1" />
+          <add-crop fileNum="img2" />
+          <add-crop fileNum="img3" />
+          <add-crop fileNum="img4" />
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <v-btn color="success" @click="exportImage">Download</v-btn>
+  </v-container>
 </template>
 
 <script>
@@ -22,8 +24,7 @@ export default {
   },
   computed: {
     img1Url() {
-      // return this.$store.state.img1;
-      return document.getElementById('img1');
+      return this.$store.state.img1;
     },
     img2Url() {
       return this.$store.state.img2;
@@ -37,12 +38,12 @@ export default {
   },
   methods: {
     exportImage() {
-      // get filter from store
-      const filter = this.img1Url.style.filter;
+      // get filter from element
+      const filter = document.getElementById('img1').style.filter;
 
       // create canvases for all four images
       let img1Canvas = new Image();
-      img1Canvas.src = this.img1Url.src;
+      img1Canvas.src = this.img1Url;
 
       let img2Canvas = new Image();
       img2Canvas.src = this.img2Url;
@@ -55,25 +56,25 @@ export default {
 
       // create the wrapper canvas with a white background
       let merger = document.createElement('canvas');
-      merger.width = 330;
-      merger.height = 1275;
+      merger.width = 560;
+      merger.height = 2150;
       let ctx = merger.getContext('2d');
-      ctx.strokeStyle = '#3a3a3a';
+      ctx.strokeStyle = '#d1d1d1';
       ctx.lineWidth = 1;
-      ctx.rect(0, 0, 330, 1275);
+      ctx.rect(0, 0, 560, 2150);
       ctx.fillStyle = 'white';
       ctx.fill();
 
       // for each image, draw the canvas leaving room for the bezels
       ctx.filter = filter;
-      ctx.drawImage(img1Canvas, 15, 15);
-      ctx.strokeRect(15, 15, 300, 300);
-      ctx.drawImage(img2Canvas, 15, 330);
-      ctx.strokeRect(15, 330, 300, 300);
-      ctx.drawImage(img3Canvas, 15, 645);
-      ctx.strokeRect(15, 645, 300, 300);
-      ctx.drawImage(img4Canvas, 15, 960);
-      ctx.strokeRect(15, 960, 300, 300);
+      ctx.drawImage(img1Canvas, 30, 30);
+      ctx.strokeRect(30, 30, 500, 500);
+      ctx.drawImage(img2Canvas, 30, 560);
+      ctx.strokeRect(30, 560, 500, 500);
+      ctx.drawImage(img3Canvas, 30, 1090);
+      ctx.strokeRect(30, 1090, 500, 500);
+      ctx.drawImage(img4Canvas, 30, 1620);
+      ctx.strokeRect(30, 1620, 500, 500);
 
       // export the full image as a png
       merger.toBlob(blob => {

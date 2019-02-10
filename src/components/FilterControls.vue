@@ -1,7 +1,9 @@
 <template>
-  <v-container fluid grid-list-ls>
+  <v-container fluid grid-list-ls class="sticky">
     <v-layout>
-      <v-flex xs3><p>Blur</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Blur</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="20"
@@ -12,7 +14,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Brightness</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Brightness</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="3"
@@ -23,7 +27,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Contrast</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Contrast</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="5"
@@ -34,7 +40,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Grayscale</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Grayscale</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="1"
@@ -45,7 +53,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Hue-Rotate</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Hue-Rotate</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="360"
@@ -56,7 +66,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Saturation</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Saturation</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="5"
@@ -67,7 +79,9 @@
       /></v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs3><p>Sepia</p></v-flex>
+      <v-flex xs3
+        ><v-chip outline color="white" class="chip">Sepia</v-chip></v-flex
+      >
       <v-flex xs8
         ><v-slider
           max="1"
@@ -79,18 +93,37 @@
     </v-layout>
 
     <v-layout>
-      <v-btn xs3 color="error" @click="setProps('defaultProps')">Reset</v-btn>
-      <v-btn xs3 color="info" @click="setProps('cleaverProps')">Cleaver</v-btn>
-      <v-btn xs3 color="info" @click="setProps('bradyProps')">Brady</v-btn>
-      <v-btn xs3 color="info" @click="setProps('wonkaProps')">Wonka</v-btn>
-      <v-btn xs3 color="info" @click="setProps('woodstockProps')"
-        >Woodstock</v-btn
-      >
-      <v-btn xs3 color="info" @click="setProps('addamsProps')">Addams</v-btn>
-      <v-btn xs3 color="info" @click="setProps('frontierProps')"
-        >Frontier</v-btn
-      >
-      <v-btn xs3 color="info" @click="setProps('invertProps')">Invert</v-btn>
+      <v-flex xs12>
+        <v-btn
+          xs3
+          outline
+          color="#0685C9"
+          dark
+          @click="setProps('defaultProps')"
+          >Reset</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('cleaverProps')"
+          >Cleaver</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('bradyProps')"
+          >Brady</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('wonkaProps')"
+          >Wonka</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('woodstockProps')"
+          >Woodstock</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('addamsProps')"
+          >Addams</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('frontierProps')"
+          >Frontier</v-btn
+        >
+        <v-btn xs3 color="#0685C9" dark @click="setProps('invertProps')"
+          >Invert</v-btn
+        >
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -222,4 +255,9 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.chip {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+</style>
