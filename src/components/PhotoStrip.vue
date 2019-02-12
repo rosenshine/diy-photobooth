@@ -17,7 +17,11 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <v-btn color="success" @click="exportImage">Download</v-btn>
+    <v-layout>
+      <v-flex xs12 sm10>
+        <v-btn color="success" @click="exportImage">Download</v-btn>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
