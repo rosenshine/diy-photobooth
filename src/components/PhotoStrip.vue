@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex>
         <h3 class="instructions">
-          Click the <i class="fas fa-plus"/> to add a picture
+          Click the <i class="fas fa-plus" /> to add a picture
         </h3>
       </v-flex>
     </v-layout>

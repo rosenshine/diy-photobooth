@@ -4,7 +4,7 @@
       <v-toolbar class="navbar">
         <v-toolbar-title>DIY PHOTOBOOTH</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-items class="hidden-sm-and-down">
+        <v-toolbar-items>
           <v-btn flat><router-link to="/">Create</router-link></v-btn>
           <v-btn flat><router-link to="/about">About</router-link></v-btn>
         </v-toolbar-items>
@@ -47,7 +47,8 @@
   .navbar {
     background-color: rgba(255, 255, 255, 0);
     color: white;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 2px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 2px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
   }
 }
 </style>
