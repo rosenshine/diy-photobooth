@@ -4,7 +4,7 @@
       <v-flex xs4>
         <img src="../assets/ducks_in_a_col.png" />
       </v-flex>
-      <v-flex xs8>
+      <v-flex xs7>
         <p class="body">
           When we were getting ready for our wedding, we made our own photobooth
           with a Raspberry Pi. People took a bunch of great photos, but after
@@ -13,7 +13,7 @@
           line editing and add some filters to boot.
         </p>
         <p>
-          View
+          View the
           <a href="https://github.com/rosenshine/diy-photobooth"
             >source code here</a
           >. Thanks to
@@ -22,6 +22,8 @@
           >
           for the vue-image-crop-upload package.
         </p>
+      </v-flex>
+      <v-flex xs1>
       </v-flex>
     </v-layout>
   </v-container>
