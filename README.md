@@ -1,34 +1,5 @@
-# photobooth
+# diy photobooth
 
-## Project setup
-```
-npm install
-```
+When we were getting ready for our wedding, we made our own photobooth with a raspberry pi. People took a bunch of great photos, but after the wedding we couldn't find an easy tool to stitch them together into a strip like a real photobooth. This tool lets you skip the command line editing and add some filters to boot.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Thanks to [dai-siki for vue-image-crop-upload](https://github.com/dai-siki/vue-image-crop-upload).

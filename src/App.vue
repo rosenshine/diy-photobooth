@@ -1,8 +1,14 @@
 <template>
   <v-app id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <v-toolbar class="navbar">
+        <v-toolbar-title>DIY PHOTOBOOTH</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn flat><router-link to="/">Create</router-link></v-btn>
+          <v-btn flat><router-link to="/about">About</router-link></v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
     </div>
     <v-content>
       <router-view />
@@ -30,13 +36,18 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 #nav {
-  padding: 30px;
   a {
     font-weight: bold;
     color: #045b8a;
     &.router-link-exact-active {
       color: white;
     }
+    text-decoration: none;
+  }
+  .navbar {
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 2px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
   }
 }
 </style>

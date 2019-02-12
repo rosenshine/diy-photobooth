@@ -121,8 +121,8 @@ export default {
 <style scoped lang="scss">
 .cell {
   cursor: pointer;
-  width: 20vw;
-  height: 20vw;
+  width: 16vw;
+  height: 16vw;
   background-color: rgb(184, 222, 241);
   margin: 15px 15px 15px 15px;
   position: relative;

@@ -1,6 +1,13 @@
 <template>
   <v-container>
     <v-layout>
+      <v-flex>
+        <h3 class="instructions">
+          Click the <i class="fas fa-plus"/> to add a picture
+        </h3>
+      </v-flex>
+    </v-layout>
+    <v-layout>
       <v-flex xs12 sm10 offset-sm1>
         <v-card class="strip">
           <add-crop fileNum="img1" />
@@ -92,5 +99,9 @@ export default {
 <style scoped lang="scss">
 .strip {
   display: inline-block;
+}
+.instructions {
+  font-style: italic;
+  margin-bottom: 15px;
 }
 </style>
