@@ -123,7 +123,7 @@ export default {
   cursor: pointer;
   width: 20vw;
   height: 20vw;
-  background-color: rgb(189, 225, 245);
+  background-color: rgb(184, 222, 241);
   margin: 15px 15px 15px 15px;
   position: relative;
 }
