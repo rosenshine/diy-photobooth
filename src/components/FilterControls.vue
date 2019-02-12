@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list-ls class="sticky">
+  <v-container fluid grid-list-ls class="container">
     <v-layout>
       <v-flex xs3
         ><v-chip outline color="white" class="chip">Blur</v-chip></v-flex

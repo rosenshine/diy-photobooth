@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
     <v-layout>
-      <v-flex xs6>
+      <v-flex xs8>
         <FilterControls />
       </v-flex>
-      <v-flex xs6>
+      <v-flex xs4>
         <PhotoStrip />
       </v-flex>
     </v-layout>

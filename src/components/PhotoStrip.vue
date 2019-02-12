@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex>
+      <v-flex xs12 sm10>
         <h3 class="instructions">
           Click the <i class="fas fa-plus" /> to add a picture
         </h3>
       </v-flex>
     </v-layout>
     <v-layout>
-      <v-flex xs12 sm10 offset-sm1>
+      <v-flex xs12 sm10>
         <v-card class="strip">
           <add-crop fileNum="img1" />
           <add-crop fileNum="img2" />
