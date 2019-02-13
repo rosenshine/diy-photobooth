@@ -2,7 +2,7 @@
   <v-app id="app">
     <div id="nav">
       <v-toolbar class="navbar">
-        <v-toolbar-title>DIY PHOTOBOOTH</v-toolbar-title>
+        <v-toolbar-title>DIY PHOTOSTRIP</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn flat><router-link to="/">Create</router-link></v-btn>

@@ -93,7 +93,8 @@
     </v-layout>
 
     <v-layout>
-      <v-flex xs12>
+      <v-flex xs2/>
+      <v-flex xs8>
         <v-btn
           xs3
           outline
